@@ -14,17 +14,27 @@ Patch kernel source tree với KSU manual hooks cho Non-GKI devices.
 
 ## Hỗ trợ biến thể và Setup Commands
 
-| # | Biến thể | Mode | Setup Command |
-|---|----------|------|---------------|
-| 1 | ReSukiSU | - | `curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" \| bash` |
-| 2 | KSU Next | latest | `curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" \| bash -` |
-| 2 | KSU Next | stable | `curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" \| bash -s stable` |
-| 2 | KSU Next | legacy | `curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" \| bash -s legacy` |
-| 3 | Wild KSU | wild | `curl -LSs "https://raw.githubusercontent.com/WildKernels/Wild_KSU/wild/kernel/setup.sh" \| bash -s wild` |
-| 4 | SukiSU Ultra | builtin | `curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" \| bash -s builtin` |
-| 4 | SukiSU Ultra | susfs | `curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" \| bash -s susfs-main` |
-| 5 | RKSU | main | `curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" \| bash -s main` |
-| 5 | RKSU | susfs | `curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" \| bash -s susfs-rksu-master` ⚠️ |
+| # | Biến thể | Mode | Setup Command | Kernel hỗ trợ |
+|---|----------|------|---------------|---------------|
+| 1 | ReSukiSU | - | `curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" \| bash` | 4.4 - 5.4 |
+| 2 | KSU Next | latest | `curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" \| bash -` | 5.7+ |
+| 2 | KSU Next | stable | `curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" \| bash -s stable` | 5.7+ |
+| 2 | KSU Next | legacy | `curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" \| bash -s legacy` | 4.4 - 5.4 |
+| 3 | SukiSU Ultra | builtin | `curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" \| bash -s builtin` | 5.7+ |
+| 3 | SukiSU Ultra | susfs | `curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" \| bash -s susfs-main` | 5.7+ |
+| 4 | RKSU | main | `curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" \| bash -s main` | 4.4 - 5.4 |
+| 4 | RKSU | susfs | `curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" \| bash -s susfs-rksu-master` ⚠️ | 5.7+ |
+
+## Kernel Compatibility Notes
+
+| Biến thể | Kernel 4.4-4.14 | Kernel 4.19-5.4 | Kernel 5.7+ |
+|----------|-----------------|------------------|-------------|
+| ReSukiSU | ✅ | ✅ | ✅ |
+| KSU Next legacy | ✅ | ✅ | ✅ |
+| KSU Next stable/latest | ❌ | ❌ | ✅ |
+| SukiSU Ultra | ⚠️ | ⚠️ | ✅ |
+| RKSU main | ✅ | ✅ | ✅ |
+| RKSU susfs | ⚠️ | ⚠️ | ✅ |
 
 ## Yêu cầu
 
@@ -75,23 +85,20 @@ Chọn biến thể KSU:
 
 1. ReSukiSU
    - Hook riêng từ resukisu.github.io
-   - Setup: curl ...ReSukiSU/main/kernel/setup.sh | bash
+   - Hỗ trợ: 4.4 - 5.4
 
 2. KSU Next
-   2a. latest - Branch next mới nhất
-   2b. stable - Branch stable  
-   2c. legacy - Cho kernel cũ, nên dùng với SUSFS
+   2a. legacy - Cho kernel 4.4-5.4, nên dùng với SUSFS
+   2b. stable - Branch stable (5.7+)
+   2c. latest - Branch next mới nhất (5.7+)
 
-3. Wild KSU
-   - Branch wild (không cần chọn mode)
+3. SukiSU Ultra
+   3a. builtin - Manual hook không SUSFS (5.7+)
+   3b. susfs - Có SUSFS tích hợp (5.7+)
 
-4. SukiSU Ultra
-   4a. builtin - Manual hook không SUSFS
-   4b. susfs - Có SUSFS tích hợp
-
-5. RKSU
-   5a. main - Manual hook
-   5b. susfs - Có SUSFS tích hợp (⚠️ Experimental, có thể chưa hỗ trợ Non-GKI đầy đủ)
+4. RKSU
+   4a. main - Manual hook (4.4-5.4)
+   4b. susfs - Có SUSFS tích hợp ⚠️ (5.7+, experimental)
 ```
 
 ### Bước 3: Git Backup
@@ -125,28 +132,25 @@ Chạy setup command theo option user đã chọn:
 # ReSukiSU
 curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" | bash
 
-# KSU Next - latest
+# KSU Next - latest (5.7+)
 curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -
 
-# KSU Next - stable
+# KSU Next - stable (5.7+)
 curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s stable
 
-# KSU Next - legacy
+# KSU Next - legacy (4.4-5.4)
 curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s legacy
 
-# Wild KSU
-curl -LSs "https://raw.githubusercontent.com/WildKernels/Wild_KSU/wild/kernel/setup.sh" | bash -s wild
-
-# SukiSU Ultra - builtin
+# SukiSU Ultra - builtin (5.7+)
 curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s builtin
 
-# SukiSU Ultra - susfs
+# SukiSU Ultra - susfs (5.7+)
 curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s susfs-main
 
-# RKSU - main
+# RKSU - main (4.4-5.4)
 curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s main
 
-# RKSU - susfs (⚠️ Experimental)
+# RKSU - susfs ⚠️ (5.7+, experimental)
 curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s susfs-rksu-master
 ```
 
@@ -197,7 +201,7 @@ ReSukiSU hooks cần apply:
 | input | `drivers/input/input.c` | all | ❌ Optional |
 | policy_rwlock | `security/selinux/ss/services.c` | all | ❌ Optional |
 
-#### B. KSU Next / Wild KSU / SukiSU Ultra / RKSU (Shared hooks)
+#### B. KSU Next / SukiSU Ultra / RKSU (Shared hooks)
 
 **Xác định kernel version để chọn patch**:
 ```bash
@@ -297,14 +301,14 @@ Pre-flight check:
 
 Cung cấp:
 - Defconfig sử dụng: ???
-- Biến thể KSU và mode (1-5, a/b/c)
+- Biến thể KSU và mode (1-4, a/b/c)
 ```
 
 ### RKSU Susfs Warning
 ```
-⚠️ RKSU susfs có thể chưa hỗ trợ Non-GKI đầy đủ.
+⚠️ RKSU susfs có thể chưa hỗ trợ Non-GKI đầy đủ (yêu cầu kernel 5.7+).
 1. Tiếp tục (experimental)
-2. Chuyển sang RKSU main mode
+2. Chuyển sang RKSU main mode (hỗ trợ 4.4-5.4)
 3. Hủy bỏ
 ```
 
@@ -321,6 +325,5 @@ Cung cấp:
 - ReSukiSU repo: https://github.com/ReSukiSU/ReSukiSU
 - rksuorg patches: https://github.com/rksuorg/kernel_patches/tree/master/manual_hook
 - KSU Next: https://github.com/KernelSU-Next/KernelSU-Next
-- Wild KSU: https://github.com/WildKernels/Wild_KSU
 - SukiSU Ultra: https://github.com/SukiSU-Ultra/SukiSU-Ultra
 - RKSU: https://github.com/rsuntk/KernelSU
