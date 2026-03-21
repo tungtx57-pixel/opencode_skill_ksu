@@ -15,8 +15,7 @@ Bộ skill cho [OpenCode](https://opencode.ai) hỗ trợ patch và hook các bi
 | Biến thể | Manual Hook | SUSFS Inline |
 |-----------|------------|-------------|
 | ReSukiSU | ✅ | ✅ |
-| KSU Next | ✅ (latest/stable/legacy) | ✅ (legacy) |
-| Wild KSU | ✅ | ❌ |
+| KSU Next | ✅ (latest/stable/legacy) | ❌ |
 | SukiSU Ultra | ✅ (builtin/susfs) | ✅ (susfs-main) |
 | RKSU | ✅ (main/susfs) | ⚠️ (experimental) |
 
@@ -62,7 +61,7 @@ Khi cần patch kernel, agent sẽ tự động thấy skills và có thể load
 
 - [ReSukiSU](https://github.com/ReSukiSU/ReSukiSU)
 - [KSU Next](https://github.com/KernelSU-Next/KernelSU-Next)
-- [Wild KSU](https://github.com/WildKernels/Wild_KSU)
+
 - [SukiSU Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra)
 - [RKSU](https://github.com/rsuntk/KernelSU)
 - [rksuorg patches](https://github.com/rksuorg/kernel_patches)
