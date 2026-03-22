@@ -21,26 +21,8 @@ Bộ skill cho [OpenCode](https://opencode.ai) hỗ trợ patch và hook các bi
 
 ## Setup cho OpenCode
 
-### Cách 1: Paste trực tiếp (Khuyến nghị)
-
-1. Mở thư mục skills tại `~/.opencode/skills/`
-2. Tạo thư mục cho từng skill:
-   - `ksu-common/`
-   - `ksu-manual-hook/`
-   - `ksu-susfs-inline/`
-3. Paste nội dung SKILL.md vào từng thư mục tương ứng
-
-### Cách 2: Clone repo
-
 ```bash
 git clone https://github.com/DinhQuangDoi/opencode_skill_ksu.git ~/.opencode/skills/ksu
-```
-
-### Cách 3: Symlink
-
-```bash
-mkdir -p ~/.opencode/skills
-ln -sf /path/to/opencode_skill_ksu/skills/* ~/.opencode/skills/
 ```
 
 ## Sử dụng
