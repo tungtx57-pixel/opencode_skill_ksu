@@ -53,13 +53,7 @@ Thực hiện các checks:
    make kernelversion
    ```
 
-2. **GKI/Non-GKI detection**:
-   ```bash
-   # Non-GKI: Makefile ở root, không có kernel/Makefile
-   # GKI: có kernel/Makefile
-   ```
-
-3. **Architecture**:
+2. **Architecture**:
    ```bash
    # arm64: arch/arm64 tồn tại
    # arm: arch/arm tồn tại

@@ -20,21 +20,6 @@ Cung cấp các hàm utility và detection logic dùng chung cho KSU patching wo
 make kernelversion
 ```
 
-### Detect GKI vs Non-GKI
-
-Check kernel structure:
-```bash
-# Non-GKI: Makefile ở root, không có kernel/Makefile
-if [ -f "Makefile" ] && [ ! -d "kernel" ]; then
-    echo "Non-GKI kernel"
-fi
-
-# GKI: có kernel/Makefile
-if [ -d "kernel" ] && [ -f "kernel/Makefile" ]; then
-    echo "GKI kernel"
-fi
-```
-
 ### Detect Architecture
 
 ```bash
@@ -234,7 +219,6 @@ scripts/config -e KSU_SUSFS
 | ReSukiSU docs | `https://resukisu.github.io/guide/manual-integrate.html` |
 | ReSukiSU setup | `https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh` |
 | KSU Next repo | `https://github.com/KernelSU-Next/KernelSU-Next` |
-| Wild KSU repo | `https://github.com/WildKernels/Wild_KSU` |
 | SukiSU Ultra repo | `https://github.com/SukiSU-Ultra/SukiSU-Ultra` |
 | RKSU repo | `https://github.com/rsuntk/KernelSU` |
 | rksuorg (shared hooks) | `https://github.com/rksuorg/kernel_patches/tree/master/manual_hook` |
@@ -247,7 +231,7 @@ scripts/config -e KSU_SUSFS
 | susfs inline script | `https://raw.githubusercontent.com/JackA1ltman/NonGKI_Kernel_Build_2nd/mainline/Patches/susfs_inline_hook_patches.sh` |
 | susfs4ksu repo | `https://github.com/simonpunk/susfs4ksu` |
 
-### rksuorg Hook Patches (cho KSU Next, Wild KSU, SukiSU Ultra, RKSU)
+### rksuorg Hook Patches (cho KSU Next, SukiSU Ultra, RKSU)
 
 | Kernel Version | URL |
 |----------------|-----|
@@ -270,16 +254,13 @@ Chọn biến thể KSU:
    2b. stable - Branch stable
    2c. legacy - Cho kernel cũ, nên dùng với SUSFS
 
-3. Wild KSU (không cần chọn mode)
-   - Setup: curl ...Wild_KSU/wild/kernel/setup.sh | bash -s wild
+3. SukiSU Ultra
+   3a. builtin - Manual hook không SUSFS
+   3b. susfs - Có SUSFS tích hợp
 
-4. SukiSU Ultra
-   4a. builtin - Manual hook không SUSFS
-   4b. susfs - Có SUSFS tích hợp
-
-5. RKSU
-   5a. main - Manual hook
-   5b. susfs - Có SUSFS tích hợp (⚠️ Experimental)
+4. RKSU
+   4a. main - Manual hook
+   4b. susfs - Có SUSFS tích hợp (⚠️ Experimental)
 ```
 
 ### RKSU Susfs Warning

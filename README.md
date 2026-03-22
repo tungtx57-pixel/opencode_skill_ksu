@@ -39,7 +39,7 @@ Khi cần patch kernel, agent sẽ tự động thấy skills và có thể load
 Khi được yêu cầu patch kernel, agent sẽ thực hiện theo các bước sau:
 
 1. **Clone/Copy source kernel** - Lấy kernel source cần patch
-2. **Detection** - Xác định kernel version và kiến trúc (GKI/Non-GKI)
+2. **Detection** - Xác định kernel version
 3. **Chọn variant** - Xác định biến thể KSU phù hợp (ReSukiSU, KSU Next, SukiSU Ultra, RKSU)
 4. **Apply patches** - Áp dụng patches tương ứng với từng variant
 5. **Verify** - Kiểm tra các symbols và config cần thiết
@@ -47,12 +47,11 @@ Khi được yêu cầu patch kernel, agent sẽ thực hiện theo các bước
 
 ### Detection Matrix
 
-| Kernel | Architecture | Recommended Variant |
-|--------|--------------|---------------------|
-| 4.4 - 4.9 | Non-GKI | ReSukiSU, KSU Next (legacy) |
-| 4.14 | Non-GKI | KSU Next (stable), SukiSU Ultra |
-| 4.19 - 5.4 | Non-GKI | ReSukiSU, KSU Next (latest) |
-| 5.10+ | GKI | KernelSU official |
+| Kernel | Variant |
+|--------|---------|
+| 4.4 - 4.9 | ReSukiSU, KSU Next (legacy) |
+| 4.14 | KSU Next (stable), SukiSU Ultra |
+| 4.19 - 5.4 | ReSukiSU, KSU Next (latest) |
 
 ### Patch Flow
 
