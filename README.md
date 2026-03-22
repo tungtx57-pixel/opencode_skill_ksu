@@ -22,7 +22,7 @@ Bộ skill cho [OpenCode](https://opencode.ai) hỗ trợ patch và hook các bi
 ## Setup cho OpenCode
 
 ```bash
-git clone https://github.com/DinhQuangDoi/opencode_skill_ksu.git ~/.opencode/skills/ksu
+curl -sSL https://raw.githubusercontent.com/DinhQuangDoi/opencode_skill_ksu/main/setup.sh | bash
 ```
 
 ## Sử dụng
