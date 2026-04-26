@@ -349,5 +349,4 @@ patch -p1 --force < susfs_patch.patch
 ## References
 
 - JackA1ltman patches: https://github.com/JackA1ltman/NonGKI_Kernel_Build_2nd
-- susfs4ksu: https://github.com/simonpunk/susfs4ksu
 - SUSFS docs: https://github.com/simonpunk/susfs4ksu/wiki
