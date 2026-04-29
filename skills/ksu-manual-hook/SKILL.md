@@ -307,7 +307,7 @@ Cung cấp:
 ```
 
 ## Notes
-
+- Kiểm tra xem Manual Hook đã được apply hoàn toàn chưa (kiểm tra cả config manual hook)
 - **Không chạy build test** - Để tránh confuse agent
 - Yêu cầu user tự build với script riêng (build.sh)
 - Nếu build fails → Check dmesg patterns trong kernel logs
