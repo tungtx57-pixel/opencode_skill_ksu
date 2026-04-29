@@ -1,6 +1,6 @@
 ---
 name: ksu-susfs-inline
-description: Integrate SUSFS v2.0.0 with inline hooks for KSU Next, ReSukiSU, SukiSU Ultra
+description: Integrate SUSFS v2.1.0 with inline hooks for KSU Next, ReSukiSU, SukiSU Ultra
 license: MIT
 compatibility: opencode
 metadata:
@@ -10,7 +10,7 @@ metadata:
 
 ## Mục đích
 
-Tích hợp SUSFS v2.0.0 với inline hooks vào Non-GKI kernels.
+Tích hợp SUSFS v2.1.0 với inline hooks vào Non-GKI kernels.
 
 ## Hỗ trợ biến thể
 
@@ -39,7 +39,7 @@ Tích hợp SUSFS v2.0.0 với inline hooks vào Non-GKI kernels.
 
 ## SUSFS Version
 
-**Cố định: v2.0.0**
+**Cố định: v2.1.0**
 
 ## Workflow
 
@@ -109,7 +109,7 @@ git status
 
 # Commit trước khi modify
 git add -A
-git commit -m "Before SUSFS v2.0.0 inline hooks"
+git commit -m "Before SUSFS v2.1.0 inline hooks"
 ```
 
 **Rollback nếu cần**:
@@ -129,7 +129,7 @@ Hỏi user:
 
 ```
 Phát hiện SUSFS cũ trong kernel.
-1. Xóa hoàn toàn và apply SUSFS 2.0.0 mới
+1. Xóa hoàn toàn và apply SUSFS 2.1.0 mới
 2. Xóa và bỏ qua (không cài SUSFS)
 3. Giữ nguyên và bỏ qua
 ```
@@ -299,7 +299,7 @@ ls -la drivers/kernelsu/ 2>/dev/null || ls -la drivers/misc/ksu/ 2>/dev/null
 
 ### Initial Prompt
 ```
-Bạn muốn integrate SUSFS v2.0.0 inline hooks?
+Bạn muốn integrate SUSFS v2.1.0 inline hooks?
 Yêu cầu: Kernel đã có KSU (manual hooks đã apply)
 - Kernel version: $(make kernelversion)
 - KSU đã cài: {có/không}
@@ -314,7 +314,7 @@ SUSFS Source:
 
 ### Post-Apply Summary
 ```
-SUSFS v2.0.0 đã được apply:
+SUSFS v2.1.0 đã được apply:
 - Version: {from susfs.h}
 - Hooks: {list files}
 - Config: {CONFIG_KSU_SUSFS}
@@ -342,7 +342,7 @@ patch -p1 --force < susfs_patch.patch
 ## Notes
 
 - **Không chạy build test** - Để tránh confuse agent
-- SUSFS v2.0.0 là phiên bản cố định
+- SUSFS v2.1.0 là phiên bản cố định
 - Inline hooks sẽ skip nếu đã có KSU hooks (bình thường)
 - Khuyến khích user tự build với script riêng
 
