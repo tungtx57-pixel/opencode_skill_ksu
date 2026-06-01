@@ -1,6 +1,6 @@
 ---
 name: ksu-susfs-inline
-description: Integrate SUSFS v2.1.0 with inline hooks for KSU Next, ReSukiSU, SukiSU Ultra
+description: Integrate SUSFS v2.1.0 with inline hooks for KSU Next, ReSukiSU, SukiSU Ultra, KittiSU
 license: MIT
 compatibility: opencode
 metadata:
@@ -17,7 +17,7 @@ Tích hợp SUSFS v2.1.0 với inline hooks vào Non-GKI kernels.
 | Biến thể | SUSFS Inline | Notes |
 |----------|-------------|-------|
 | KSU Next | ✅ | **Primary target** - Nên dùng **legacy** mode |
-| ReSukiSU | ✅ | Có hook riêng nhưng dùng chung susfs |
+| ReSukiSU và KittiSU | ✅ | Có hook riêng nhưng dùng chung susfs |
 | SukiSU Ultra | ✅ | KernelPatch-based - Có mode **susfs-main** |
 | Wild KSU | ❌ | Chưa hỗ trợ |
 | RKSU | ⚠️ | Mode **susfs-rksu-master** - Experimental, có thể chưa hỗ trợ Non-GKI |
@@ -30,6 +30,7 @@ Tích hợp SUSFS v2.1.0 với inline hooks vào Non-GKI kernels.
 | ReSukiSU | - | `curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" \| bash` |
 | SukiSU Ultra | susfs | `curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" \| bash -s susfs-main` |
 | RKSU | susfs | `curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" \| bash -s susfs-rksu-master` ⚠️ |
+| KittiSU | - | `curl -LSs "https://raw.githubusercontent.com/anotheranhiutangerine/KittiSU/main/kernel/setup.sh" \| bash` |
 
 ## Yêu cầu
 
@@ -79,15 +80,18 @@ Chọn biến thể KSU đã cài (phải có KSU trước khi cài SUSFS):
 2. ReSukiSU
    - Setup: curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" | bash
 
-3. SukiSU Ultra
+3. KittiSU
+   - Setup: curl -LSs "https://raw.githubusercontent.com/anotheranhiutangerine/KittiSU/main/kernel/setup.sh" | bash
+
+4. SukiSU Ultra
    - Nên dùng: susfs-main mode (đã có SUSFS tích hợp)
    - Setup: curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s susfs-main
 
-4. RKSU
+5. RKSU
    - Mode susfs (⚠️ Experimental - có thể chưa hỗ trợ Non-GKI)
    - Setup: curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s susfs-rksu-master
 
-5. Hủy bỏ
+6. Hủy bỏ
 ```
 
 **Lưu ý cho RKSU**:
@@ -350,3 +354,4 @@ patch -p1 --force < susfs_patch.patch
 
 - JackA1ltman patches: https://github.com/JackA1ltman/NonGKI_Kernel_Build_2nd
 - SUSFS docs: https://github.com/simonpunk/susfs4ksu/wiki
+- KittiSU telegram: https://t.me/terebiko_KittiSU
